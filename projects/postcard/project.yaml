@@ -1,0 +1,11 @@
+homepage: "https://github.com/jamesmunns/postcard"
+main_repo: "https://github.com/jamesmunns/postcard"
+language: rust
+# primary_contact = crate maintainer (James Munns), confirmed from
+# source/postcard/Cargo.toml authors. OSS-Fuzz requires the primary contact
+# to be a maintainer of the project.
+primary_contact: "james@onevariable.com"
+sanitizers:
+  - address
+fuzzing_engines:
+  - libfuzzer
