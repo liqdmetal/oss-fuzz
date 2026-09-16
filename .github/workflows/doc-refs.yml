@@ -1,0 +1,18 @@
+name: doc-refs
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  doc-refs:
+    name: doc commit refs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Resolving the pinned hashes requires full history; a shallow
+          # clone would report everything missing.
+          fetch-depth: 0
+      - name: Verify every commit hash cited in the manifest docs resolves
+        uses: ./.github/actions/doc-refs

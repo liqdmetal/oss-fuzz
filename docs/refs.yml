@@ -1,0 +1,7 @@
+# Docs whose commit-hash citations CI verifies (the doc-refs action; see
+# .github/actions/doc-refs/README.md for the contract). In this fork the
+# fork-local pins must resolve here; cross-repo pins (spore commits, the
+# fuzz-build tool pin) carry `no-verify-hash` and are enforced where they
+# live — spore's doc-refs job and the Dockerfile's pinned `git checkout`.
+docs:
+  - path: projects/spore/README.md
