@@ -5,3 +5,4 @@
 # live — spore's doc-refs job and the Dockerfile's pinned `git checkout`.
 docs:
   - path: projects/spore/README.md
+  - path: projects/go-dns/README.md
