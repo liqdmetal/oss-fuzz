@@ -54,7 +54,7 @@ go mod tidy
 # (SPORE_GEN_SEED_CORPUS=1) and committed under
 # internal/wirefuzz/testdata/fuzz/seedcorpus/. Zip them per target.
 mkdir -p $OUT
-for target in frameparse handshakeunmarshal messageunmarshal; do
+for target in frameparse handshakeunmarshal messageunmarshal fabricrpc2frame; do
   zip -q -j $OUT/${target}_fuzzer_seed_corpus.zip \
     internal/wirefuzz/testdata/fuzz/seedcorpus/*
 done
@@ -66,3 +66,6 @@ done
 compile_native_go_fuzzer github.com/liqdmetal/spore/internal/wirefuzz FuzzFrameParse frameparse_fuzzer
 compile_native_go_fuzzer github.com/liqdmetal/spore/internal/wirefuzz FuzzHandshakeUnmarshal handshakeunmarshal_fuzzer
 compile_native_go_fuzzer github.com/liqdmetal/spore/internal/wirefuzz FuzzMessageUnmarshal messageunmarshal_fuzzer
+# The fabric's second encoding (CBOR/rpc2, F4a): DecodeRPC2Frame is the
+# relay-facing hostile-frame parse surface for Peer.FabricReg/Put/Pop.
+compile_native_go_fuzzer github.com/liqdmetal/spore/internal/wirefuzz FuzzFabricRPC2Frame fabricrpc2frame_fuzzer
